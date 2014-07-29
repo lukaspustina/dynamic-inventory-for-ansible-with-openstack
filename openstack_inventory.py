@@ -93,7 +93,7 @@ def getAnsibleHostVarsFromServer(novaClient, serverId):
 	if metadata:
 		host_vars = {}
 		for kv in metadata.split(';'):
-			key, values = metadata.split('->')
+			key, values = kv.split('->')
 			values = values.split(',')
 			host_vars[key] = values
 		return host_vars
