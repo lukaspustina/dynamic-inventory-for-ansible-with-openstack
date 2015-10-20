@@ -37,7 +37,7 @@
 ################################################################################
 
 from __future__ import print_function
-from novaclient.v1_1 import client
+from novaclient import client
 import os, sys, json
 
 OS_METADATA_KEY = {
@@ -49,7 +49,7 @@ OS_NETWORK_NAME = 'virtual_infrastructure_network'
 
 def main(args):
 	credentials = getOsCredentialsFromEnvironment()
-	nt = client.Client(credentials['USERNAME'], credentials['PASSWORD'], credentials['TENANT_NAME'], credentials['AUTH_URL'], service_type="compute")
+    nt = client.Client(credentials['VERSION'], credentials['USERNAME'], credentials['PASSWORD'], os_tenant_name, credentials['AUTH_URL'], service_type="compute")
 
 	inventory = {}
 	inventory['_meta'] = { 'hostvars': {} }
@@ -68,6 +68,7 @@ def main(args):
 def getOsCredentialsFromEnvironment():
 	credentials = {}
 	try:
+        credentials['VERSION'] = os.environ['OS_COMPUTE_API_VERSION']
 		credentials['USERNAME'] = os.environ['OS_USERNAME']
 		credentials['PASSWORD'] = os.environ['OS_PASSWORD']
 		credentials['TENANT_NAME'] = os.environ['OS_TENANT_NAME']
