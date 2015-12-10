@@ -49,7 +49,7 @@ OS_NETWORK_NAME = 'virtual_infrastructure_network'
 
 def main(args):
 	credentials = getOsCredentialsFromEnvironment()
-    nt = client.Client(credentials['VERSION'], credentials['USERNAME'], credentials['PASSWORD'], os_tenant_name, credentials['AUTH_URL'], service_type="compute")
+	nt = client.Client(credentials['VERSION'], credentials['USERNAME'], credentials['PASSWORD'], os_tenant_name, credentials['AUTH_URL'], service_type="compute")
 
 	inventory = {}
 	inventory['_meta'] = { 'hostvars': {} }
@@ -68,7 +68,7 @@ def main(args):
 def getOsCredentialsFromEnvironment():
 	credentials = {}
 	try:
-        credentials['VERSION'] = os.environ['OS_COMPUTE_API_VERSION']
+		credentials['VERSION'] = os.environ['OS_COMPUTE_API_VERSION']
 		credentials['USERNAME'] = os.environ['OS_USERNAME']
 		credentials['PASSWORD'] = os.environ['OS_PASSWORD']
 		credentials['TENANT_NAME'] = os.environ['OS_TENANT_NAME']
@@ -124,5 +124,5 @@ def dumpInventoryAsJson(inventory):
 
 
 if __name__ == "__main__":
-    main(sys.argv)
+	main(sys.argv)
 
