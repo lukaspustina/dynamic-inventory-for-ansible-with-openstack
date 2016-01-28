@@ -49,7 +49,7 @@ OS_NETWORK_NAME = 'virtual_infrastructure_network'
 
 def main(args):
 	credentials = getOsCredentialsFromEnvironment()
-	nt = client.Client(credentials['VERSION'], credentials['USERNAME'], credentials['PASSWORD'], os_tenant_name, credentials['AUTH_URL'], service_type="compute")
+	nt = client.Client(credentials['VERSION'], credentials['USERNAME'], credentials['PASSWORD'], credentials['TENANT_NAME'], credentials['AUTH_URL'], service_type="compute")
 
 	inventory = {}
 	inventory['_meta'] = { 'hostvars': {} }
